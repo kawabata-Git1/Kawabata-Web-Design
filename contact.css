@@ -1,0 +1,376 @@
+@charset "utf-8";
+
+*,::before,::after{
+  padding:0;
+  margin:0;
+}
+
+.header-logo,
+.header-logo:visited,
+.header-logo:hover,
+.header-logo:active {
+  color: inherit;        /* 親要素の色をそのまま使う（＝変化しない） */
+  text-decoration: none; /* 下線を消す */
+}
+
+.header-logo p {
+  color: inherit;        /* 念のため明示 */
+}
+
+
+.header-inner{
+display: flex;
+justify-content:space-between;
+align-items: center;
+}
+
+.header-logo{
+ display:flex;
+ padding: 15px 30px;
+ align-items: center;
+}
+
+.header-logo img{
+  width:120px;
+  height:auto;
+}
+
+.header-logo p{
+  font-size:20px;
+}
+
+.header-site-menu{
+margin-right: 30px;
+
+}
+
+
+.header-site-menu li{
+  list-style:none;
+  float:left;
+  font-size:20px;
+  padding: 35px 20px;
+}
+
+.footer{
+ display: flex;
+justify-content:space-between;
+align-items: center;
+margin:30px 30px;
+}
+
+.footer li{
+  font-size: 20px;
+}
+
+.copyright{
+  font-size:20px;
+}
+
+.footer {
+  padding: 20px 20px;
+}
+
+
+.site-menu ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-menu ul li {
+  display: flex;
+  align-items: center; /* ← これで上下が完全に揃う!! */
+}
+
+.site-menu ul li a {
+  display: flex;        /* 中身（文字 or 画像）を中央揃え */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+.twitter {
+  width: 30px;
+  height: auto;
+}
+
+.git {
+  width: 25px;
+  height: auto;
+}
+
+
+.site-menu a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* -------------------------------
+   文字アニメーション
+-------------------------------- */
+
+/* 共通アニメーション（フェード＋下から） */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s forwards ease-out;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* タイトル */
+.first-view-text h1 {
+  animation-delay: 0.3s; /* 最初に登場 */
+}
+
+/* サブテキスト */
+.first-view-text p {
+  animation-delay: 1.2s; /* タイトルのあとに登場 */
+}
+
+/* 念のため text-align を指定 */
+.first-view-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+
+
+.header-site-menu ul li a ,.site-menu li a{
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.header-site-menu ul li a:hover,.site-menu ul li a:hover {
+  transform: translateY(-3px); /* 上にふわっと浮く */
+  color: #8a7b7b; 
+}
+
+
+.twitter,
+.git {
+  display: inline-block;   /* これが必要！ */
+  transition: transform 0.2s ease; 
+}
+
+.twitter:hover,
+.git:hover {
+  transform: translateY(-3px); /* ふわっと浮く */
+}
+
+
+/*リンク対策*/
+.header-site-menu ul li a, .site-menu ul li a {
+  color: inherit;        /* 親要素の色をそのまま使う */
+  text-decoration: none; /* 下線を消す（必要なら） */
+}
+
+
+/* ここまでヘッダーとフッター */
+
+/* ============================
+   全体の余白・フォント・背景
+============================ */
+body {
+  background: #ffffff;
+  color: #333;
+  font-family: "Montserrat", "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+}
+
+
+
+
+.Form {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+}
+@media screen and (max-width: 480px) {
+  .Form {
+    margin-top: 40px;
+  }
+}
+.Form-Item {
+  border-top: 1px solid #ddd;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    flex-wrap: wrap;
+  }
+}
+.Form-Item:nth-child(5) {
+  border-bottom: 1px solid #ddd;
+}
+.Form-Item-Label {
+  width: 100%;
+  max-width: 248px;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Label {
+    max-width: inherit;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+  }
+}
+.Form-Item-Label.isMsg {
+  margin-top: 8px;
+  margin-bottom: auto;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Label.isMsg {
+    margin-top: 0;
+  }
+}
+.Form-Item-Label-Required {
+  border-radius: 6px;
+  margin-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 48px;
+  display: inline-block;
+  text-align: center;
+  background: #000000;
+  color: #fff;
+  font-size: 14px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Label-Required {
+    border-radius: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 32px;
+    font-size: 10px;
+  }
+}
+.Form-Item-Input {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 48px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #eaedf2;
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Input {
+    margin-left: 0;
+    margin-top: 18px;
+    height: 40px;
+    flex: inherit;
+    font-size: 15px;
+  }
+}
+.Form-Item-Textarea {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 216px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #eaedf2;
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Textarea {
+    margin-top: 18px;
+    margin-left: 0;
+    height: 200px;
+    flex: inherit;
+    font-size: 15px;
+  }
+}
+.Form-Btn {
+  border-radius: 6px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 280px;
+  display: block;
+  letter-spacing: 0.05em;
+  background: #000000;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Btn {
+    margin-top: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 160px;
+    font-size: 16px;
+  }
+}
+
+
+
+.Form-Btn:hover {
+  background-color: #474343;  /* 色を少し薄く */
+  transform: scale(0.97);  /* ちょっと凹むように */
+}
+
+
+
+.form-area {
+  display: flex;
+  justify-content: center;  /* 横方向の中央寄せ */
+  align-items: center;      /* 縦方向の中央寄せ（必要なら） */
+  flex-direction: column;
+  min-height: 100vh;        /* 画面中央にしたい場合 */
+}
+
+/* フォーム本体の幅を調整して見やすくする */
+.Form {
+  width: 90%;
+  max-width: 600px;         /* 中央に見える適切な幅 */
+  margin: 0 auto;
+}
+
+.top {
+  display: flex;
+  flex-direction: column; /* 縦並び */
+  align-items: center;    /* 水平方向の中央揃え */
+  text-align: center;     /* テキストも中央揃え */
+  gap: 15px;              /* 画像と文字の間の余白 */
+  margin: 30px 0;         /* 上下の余白（お好みで） */
+}
+
+.top img {
+  width: 200px; /* ロゴの大きさ（お好みで調整） */
+}
+
+

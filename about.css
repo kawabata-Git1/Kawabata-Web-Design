@@ -1,0 +1,374 @@
+@charset "utf-8";
+
+*,::before,::after{
+  padding:0;
+  margin:0;
+}
+
+.header-logo,
+.header-logo:visited,
+.header-logo:hover,
+.header-logo:active {
+  color: inherit;        /* 親要素の色をそのまま使う（＝変化しない） */
+  text-decoration: none; /* 下線を消す */
+}
+
+.header-logo p {
+  color: inherit;        /* 念のため明示 */
+}
+
+
+
+.header-inner{
+display: flex;
+justify-content:space-between;
+align-items: center;
+}
+
+.header-logo{
+ display:flex;
+ padding: 15px 30px;
+ align-items: center;
+}
+
+.header-logo img{
+  width:120px;
+  height:auto;
+}
+
+.header-logo p{
+  font-size:20px;
+}
+
+.header-site-menu{
+margin-right: 30px;
+
+}
+
+
+.header-site-menu li{
+  list-style:none;
+  float:left;
+  font-size:20px;
+  padding: 35px 20px;
+}
+
+.footer{
+ display: flex;
+justify-content:space-between;
+align-items: center;
+margin:30px 30px;
+}
+
+.footer li{
+  font-size: 20px;
+}
+
+.copyright{
+  font-size:20px;
+}
+
+.footer {
+  padding: 20px 20px;
+}
+
+
+
+
+.site-menu ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-menu ul li {
+  display: flex;
+  align-items: center; /* ← これで上下が完全に揃う!! */
+}
+
+.site-menu ul li a {
+  display: flex;        /* 中身（文字 or 画像）を中央揃え */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+.twitter {
+  width: 30px;
+  height: auto;
+}
+
+.git {
+  width: 25px;
+  height: auto;
+}
+
+
+.site-menu a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* -------------------------------
+   文字アニメーション
+-------------------------------- */
+
+/* 共通アニメーション（フェード＋下から） */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s forwards ease-out;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* タイトル */
+.first-view-text h1 {
+  animation-delay: 0.3s; /* 最初に登場 */
+}
+
+/* サブテキスト */
+.first-view-text p {
+  animation-delay: 1.2s; /* タイトルのあとに登場 */
+}
+
+/* 念のため text-align を指定 */
+.first-view-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+
+
+.header-site-menu ul li a ,.site-menu li a{
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.header-site-menu ul li a:hover,.site-menu ul li a:hover {
+  transform: translateY(-3px); /* 上にふわっと浮く */
+  color: #8a7b7b; 
+}
+
+
+.twitter,
+.git {
+  display: inline-block;   /* これが必要！ */
+  transition: transform 0.2s ease; 
+}
+
+.twitter:hover,
+.git:hover {
+  transform: translateY(-3px); /* ふわっと浮く */
+}
+
+
+/*リンク対策*/
+.header-site-menu ul li a, .site-menu ul li a {
+  color: inherit;        /* 親要素の色をそのまま使う */
+  text-decoration: none; /* 下線を消す（必要なら） */
+}
+
+
+/* ここまでヘッダーとフッター */
+
+/* ============================
+   全体の余白・フォント・背景
+============================ */
+body {
+  background: #ffffff;
+  color: #333;
+  font-family: "Montserrat", "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+}
+
+/*プロフィール*/
+.profile-area {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;              /* 左右の距離 */
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* 左側の丸いアイコン */
+.profile-area .icon img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #5fbadf;  /* 画像のような淡い水色 */
+  object-fit: cover;
+}
+
+/* 右側のプロフィール領域 */
+.profile-area .profile {
+  max-width: 800px;
+}
+
+/* 見出しデザイン：H1を小さめに */
+.profile-area .profile h1 {
+  font-size: 25px;
+  font-weight: 500;
+  margin: 25px 0 10px;
+}
+
+/* テキスト（本文） */
+.profile-area .profile p {
+  line-height: 1.8;
+  font-size: 18px;
+  color: #333;
+  font-weight:bold;
+}
+
+/* リスト */
+.profile-area ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-area ul li {
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight:bold;
+  color: #333;
+}
+
+/* Interests の単独 li 対応（ulなし） */
+.profile-area > .profile > li {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .profile-area {
+    flex-direction: column;
+    text-align: left;
+    gap: 30px;
+  }
+
+  .profile-area .icon img {
+    margin: 0 auto;
+  }
+}
+
+
+
+/*スキル欄*/
+
+.skill-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.skill-title {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+/* 2×2 グリッド配置 */
+.skill-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px 80px; /* 余白調整（上下・左右） */
+  max-width: 900px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.skill-box {
+  text-align: left;
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.skill-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.label {
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+.skill-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skill-box ul li {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+/* スマホでは縦並びへ */
+@media (max-width: 768px) {
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skill-area {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px; /* ← ここで横の空白を調整 */
+}
+
+
+.skill-icon{
+  width: 40px;
+  height:auto;
+}
+
+.skill-top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-title{
+   display: flex;        /* 必須 */
+  align-items: center;  /* ここで画像と文字の高さが揃う */
+}
+.profile-icon{
+  width: 40px;
+  height:auto;
+}
+
+.skill-area ul li{
+  display:flex;
+  justify-content:flex-start;
+  font-size:18px;
+  font-weight: bold;
+}
+
+.media-link{
+  text-decoration: none;
+}
+
+.media-link:link,
+.media-link:visited,
+.media-link:hover,
+.media-link:active {
+text-decoration: none;
+color: inherit;    
+}
+

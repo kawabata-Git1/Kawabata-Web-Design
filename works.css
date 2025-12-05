@@ -1,0 +1,283 @@
+@charset "utf-8";
+
+*,::before,::after{
+  padding:0;
+  margin:0;
+}
+
+
+.header-logo,
+.header-logo:visited,
+.header-logo:hover,
+.header-logo:active {
+  color: inherit;        /* 親要素の色をそのまま使う（＝変化しない） */
+  text-decoration: none; /* 下線を消す */
+}
+
+.header-logo p {
+  color: inherit;        /* 念のため明示 */
+}
+
+
+.header-inner{
+display: flex;
+justify-content:space-between;
+align-items: center;
+}
+
+.header-logo{
+ display:flex;
+ padding: 15px 30px;
+ align-items: center;
+}
+
+.header-logo img{
+  width:120px;
+  height:auto;
+}
+
+.header-logo p{
+  font-size:20px;
+}
+
+.header-site-menu{
+margin-right: 30px;
+
+}
+
+
+.header-site-menu li{
+  list-style:none;
+  float:left;
+  font-size:20px;
+  padding: 35px 20px;
+}
+
+.footer{
+ display: flex;
+justify-content:space-between;
+align-items: center;
+margin:30px 30px;
+}
+
+.footer li{
+  font-size: 20px;
+}
+
+.copyright{
+  font-size:20px;
+}
+
+.footer {
+  padding: 20px 20px;
+}
+
+
+.site-menu ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-menu ul li {
+  display: flex;
+  align-items: center; /* ← これで上下が完全に揃う!! */
+}
+
+.site-menu ul li a {
+  display: flex;        /* 中身（文字 or 画像）を中央揃え */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+.twitter {
+  width: 30px;
+  height: auto;
+}
+
+.git {
+  width: 25px;
+  height: auto;
+}
+
+
+.site-menu a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* -------------------------------
+   文字アニメーション
+-------------------------------- */
+
+/* 共通アニメーション（フェード＋下から） */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s forwards ease-out;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* タイトル */
+.first-view-text h1 {
+  animation-delay: 0.3s; /* 最初に登場 */
+}
+
+/* サブテキスト */
+.first-view-text p {
+  animation-delay: 1.2s; /* タイトルのあとに登場 */
+}
+
+/* 念のため text-align を指定 */
+.first-view-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+
+
+.header-site-menu ul li a ,.site-menu li a{
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.header-site-menu ul li a:hover,.site-menu ul li a:hover {
+  transform: translateY(-3px); /* 上にふわっと浮く */
+  color: #8a7b7b; 
+}
+
+
+.twitter,
+.git {
+  display: inline-block;   /* これが必要！ */
+  transition: transform 0.2s ease; 
+}
+
+.twitter:hover,
+.git:hover {
+  transform: translateY(-3px); /* ふわっと浮く */
+}
+
+
+/*リンク対策*/
+.header-site-menu ul li a, .site-menu ul li a {
+  color: inherit;        /* 親要素の色をそのまま使う */
+  text-decoration: none; /* 下線を消す（必要なら） */
+}
+
+
+/* ここまでヘッダーとフッター */
+
+/* ============================
+   全体の余白・フォント・背景
+============================ */
+body {
+  background: #ffffff;
+  color: #333;
+  font-family: "Montserrat", "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+}
+
+
+
+.works {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.works h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列 */
+  gap: 40px 40px; /* 上下40px 左右20px */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.work-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.work-item .title {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.work-item .desc {
+  margin-top: 3px;
+  font-size: 18px;
+  color: #555;
+  line-height: 1.4;
+}
+
+
+.work-link{
+  text-decoration: none;
+  color:inherit;
+}
+
+
+/* ==== WORKS カード全体 ==== */
+.work-item {
+  background: #fff;               /* 背景色（必要に応じて変更） */
+  border-radius: 12px;            /* 角丸 */
+  overflow: hidden;               /* 子要素が飛び出さないように */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 薄い影 */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ホバー時の浮き上がりアニメーション */
+.work-item:hover {
+  transform: translateY(-6px);    /* 上にふわっと浮く */
+
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18); /* 影も濃くする */
+}
+
+/* ==== カード内リンク全体をブロックに ==== */
+.work-link {
+  display: block;
+  padding: 20px;       /* 全体の余白 */
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 画像の調整（角丸の中にきれいに収まる） */
+.work-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* タイトルの余白調整 */
+.work-item .title {
+  font-size: 18px;
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+/* 説明文 */
+.work-item .desc {
+  font-size: 15px;
+  margin-top: 6px;
+  color: #666;
+}
+
+

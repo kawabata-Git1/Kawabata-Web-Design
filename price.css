@@ -1,0 +1,270 @@
+@charset "utf-8";
+
+*,::before,::after{
+  padding:0;
+  margin:0;
+}
+
+.header-logo,
+.header-logo:visited,
+.header-logo:hover,
+.header-logo:active {
+  color: inherit;        /* 親要素の色をそのまま使う（＝変化しない） */
+  text-decoration: none; /* 下線を消す */
+}
+
+.header-logo p {
+  color: inherit;        /* 念のため明示 */
+}
+
+
+.header-inner{
+display: flex;
+justify-content:space-between;
+align-items: center;
+}
+
+.header-logo{
+ display:flex;
+ padding: 15px 30px;
+ align-items: center;
+}
+
+.header-logo img{
+  width:120px;
+  height:auto;
+}
+
+.header-logo p{
+  font-size:20px;
+}
+
+.header-site-menu{
+margin-right: 30px;
+
+}
+
+
+.header-site-menu li{
+  list-style:none;
+  float:left;
+  font-size:20px;
+  padding: 35px 20px;
+}
+
+.footer{
+ display: flex;
+justify-content:space-between;
+align-items: center;
+margin:30px 30px;
+}
+
+.footer li{
+  font-size: 20px;
+}
+
+.copyright{
+  font-size:20px;
+}
+
+.footer {
+  padding: 20px 20px;
+  margin-top: 430px;
+}
+
+
+.site-menu ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-menu ul li {
+  display: flex;
+  align-items: center; /* ← これで上下が完全に揃う!! */
+}
+
+.site-menu ul li a {
+  display: flex;        /* 中身（文字 or 画像）を中央揃え */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+.twitter {
+  width: 30px;
+  height: auto;
+}
+
+.git {
+  width: 25px;
+  height: auto;
+}
+
+
+.site-menu a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* -------------------------------
+   文字アニメーション
+-------------------------------- */
+
+/* 共通アニメーション（フェード＋下から） */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.2s forwards ease-out;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* タイトル */
+.first-view-text h1 {
+  animation-delay: 0.3s; /* 最初に登場 */
+}
+
+/* サブテキスト */
+.first-view-text p {
+  animation-delay: 1.2s; /* タイトルのあとに登場 */
+}
+
+/* 念のため text-align を指定 */
+.first-view-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+
+
+.header-site-menu ul li a ,.site-menu li a{
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.header-site-menu ul li a:hover,.site-menu ul li a:hover {
+  transform: translateY(-3px); /* 上にふわっと浮く */
+  color: #8a7b7b; 
+}
+
+
+.twitter,
+.git {
+  display: inline-block;   /* これが必要！ */
+  transition: transform 0.2s ease; 
+}
+
+.twitter:hover,
+.git:hover {
+  transform: translateY(-3px); /* ふわっと浮く */
+}
+
+
+/*リンク対策*/
+.header-site-menu ul li a, .site-menu ul li a {
+  color: inherit;        /* 親要素の色をそのまま使う */
+  text-decoration: none; /* 下線を消す（必要なら） */
+}
+
+
+/* ここまでヘッダーとフッター */
+
+/* ============================
+   全体の余白・フォント・背景
+============================ */
+body {
+  background: #ffffff;
+  color: #333;
+  font-family: "Montserrat", "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+}
+
+
+
+.price-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px 100px;
+  text-align: center;
+}
+
+/* タイトル */
+.price-title {
+  font-size: 32px;
+  margin-bottom: 50px;
+}
+
+/* 横並びの3カラム */
+.price-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 60px;
+}
+
+/* 各ボックス */
+.price-box {
+  width: 500px;
+  text-align: left;
+}
+
+/* アイコン＋タイトルを横並び */
+.price-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.price-icon {
+  width: 36px;
+  height: 36px;
+}
+
+/* 内容リスト */
+.price-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.price-box ul li {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+/* 下部メッセージ */
+.price-message {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4e4e4e;
+  margin-top: 40px;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .price-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .price-box {
+    width: 90%;
+  }
+}
+
+
